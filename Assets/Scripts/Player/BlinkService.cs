@@ -8,6 +8,7 @@ public class BlinkService : MonoBehaviour {
 
     [SerializeField] private GameObject eyelids;
     [SerializeField] private Slider blinkMeter;
+    [SerializeField] private float blinkRate;
 
     private Animator eyelidsAnimator;
 
@@ -20,6 +21,10 @@ public class BlinkService : MonoBehaviour {
     public void Update()
     {
         this.timeSinceLastBlink += Time.deltaTime;
+        if (this.timeSinceLastBlink > blinkRate)
+        {
+            this.Blink();
+        }
     }
 
     public void Blink() {
